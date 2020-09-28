@@ -4,10 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="JS函数式编程, 金银前端技术博客">
-    <meta name="description" content="1. 函数式编程的思维2. 函数式编程常用核心概念
-函数是一等公民，所谓一等公民，是指函数是与其他数据类型一样处于平等地位，可以付给其他变量，也可以作为参数，传入另一个函数，或者作为别的函数的返回值。
-不可改变量。在函数式编程中，我们通常理">
+    <meta name="keywords" content="大规模NodeJS 项目架构与优化, 金银前端技术博客">
+    <meta name="description" content="NodeJS 异步IO原理浅析及优化方案
+异步IO的好处
+
+
+前端通过异步IO可以消除UI堵塞
+假设请求资源A的时间为M，请求资源B的时间为N，那么同步的请求耗时为M+N，异步方式占有时间为Max(M,N)
+随着业务的复杂，会引入分布式系统">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>JS函数式编程 | 金银前端技术博客</title>
+    <title>大规模NodeJS 项目架构与优化 | 金银前端技术博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -268,7 +272,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        JS函数式编程
+                        大规模NodeJS 项目架构与优化
                     </div>
                 </div>
             </div>
@@ -378,25 +382,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/js/">
-                                <span class="chip bg-color">js</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/js基础/" class="post-category">
-                                js基础
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -404,7 +395,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-22
+                    2019-10-29
                 </div>
 
                 
@@ -420,36 +411,16 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="1-函数式编程的思维"><a href="#1-函数式编程的思维" class="headerlink" title="1. 函数式编程的思维"></a>1. 函数式编程的思维</h3><h3 id="2-函数式编程常用核心概念"><a href="#2-函数式编程常用核心概念" class="headerlink" title="2. 函数式编程常用核心概念"></a>2. 函数式编程常用核心概念</h3><ul>
-<li>函数是一等公民，所谓一等公民，是指函数是与其他数据类型一样处于平等地位，可以付给其他变量，也可以作为参数，传入另一个函数，或者作为别的函数的返回值。</li>
-<li>不可改变量。在函数式编程中，我们通常理解的变量在函数式编程中也被函数代替了，在函数式编程中变量仅仅代表某个表达式，这里所说的‘变量’是不能被修改的，所有的变量只能被赋一次初值。</li>
-<li>map &amp; reduce 它们是最常用的函数编程式的方法。</li>
-</ul>
-<blockquote>
-<p>函数式编程6个基本概念</p>
+                <h3 id="NodeJS-异步IO原理浅析及优化方案"><a href="#NodeJS-异步IO原理浅析及优化方案" class="headerlink" title="NodeJS 异步IO原理浅析及优化方案"></a>NodeJS 异步IO原理浅析及优化方案</h3><blockquote>
+<p>异步IO的好处</p>
 </blockquote>
-<ul>
-<li><p>纯函数<br>对于相同的输入，永远会得到相同的输出，而且没有任何可观察的副作用，也不依赖于外部环境的状态</p>
-<ul>
-<li><p>Array.slice 是纯函数，因为它没有副作用，对于固定的输入，输出总是固定的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var xs = [1,2,3,4,5]</span><br><span class="line">xs.slice(0.3)</span><br><span class="line">xs.slice(0,3)</span><br><span class="line">xs.splice(0,3)</span><br><span class="line">xs.splice(0,3)</span><br></pre></td></tr></table></figure>
-
-<p><code>以上xs.slice(0,3)不管执行几次都不会改变xs,而xs.splice(0,3)执行多次后就会改变xs的值</code></p>
-</li>
-</ul>
-</li>
-<li><p>函数的柯里化</p>
-</li>
-<li><p>函数组合</p>
-</li>
-<li><p>Point Free</p>
-</li>
-<li><p>声明式与命令式代码</p>
-</li>
-<li><p>惰性求值 </p>
-</li>
-</ul>
-<h3 id="3-当下函数式编程最热的库"><a href="#3-当下函数式编程最热的库" class="headerlink" title="3. 当下函数式编程最热的库"></a>3. 当下函数式编程最热的库</h3><h3 id="4-函数式编程的实际应用场景"><a href="#4-函数式编程的实际应用场景" class="headerlink" title="4. 函数式编程的实际应用场景"></a>4. 函数式编程的实际应用场景</h3>
+<ol>
+<li>前端通过异步IO可以消除UI堵塞</li>
+<li>假设请求资源A的时间为M，请求资源B的时间为N，那么同步的请求耗时为M+N，异步方式占有时间为Max(M,N)</li>
+<li>随着业务的复杂，会引入分布式系统，时间会线性的增加，M+N+…和Max(M,N)，这会放大同步和异步的差异</li>
+<li>I/O是昂贵的，分布式I/O是更昂贵的</li>
+</ol>
+<h3 id="NodeJS-内存管理机制及内存优化"><a href="#NodeJS-内存管理机制及内存优化" class="headerlink" title="NodeJS 内存管理机制及内存优化"></a>NodeJS 内存管理机制及内存优化</h3><h3 id="大规模Nodejs-站点结构原理分析"><a href="#大规模Nodejs-站点结构原理分析" class="headerlink" title="大规模Nodejs 站点结构原理分析"></a>大规模Nodejs 站点结构原理分析</h3><h3 id="服务器集群管理与Node集群的应用"><a href="#服务器集群管理与Node集群的应用" class="headerlink" title="服务器集群管理与Node集群的应用"></a>服务器集群管理与Node集群的应用</h3><h3 id="UV过千万的Node站点真身"><a href="#UV过千万的Node站点真身" class="headerlink" title="UV过千万的Node站点真身"></a>UV过千万的Node站点真身</h3>
             </div>
             <hr/>
 
@@ -587,8 +558,8 @@
                 </a>
             </div>
             <br/>
-            <a  href="/2019/10/22/functional/">
-                    《JS函数式编程》
+            <a  href="/2019/10/29/node-optimization/">
+                    《大规模NodeJS 项目架构与优化》
             </a> 由
             <a href="https://jinyindu.github.io">
                 jinyin.du
@@ -633,6 +604,43 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2019/11/15/web/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="前端架构那些事儿">
+                        
+                        <span class="card-title">前端架构那些事儿</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-11-15
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            jinyin.du
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2019/10/24/http/">
                     <div class="card-image">
                         
@@ -659,9 +667,9 @@ HTTP是超文本传输协议，从www浏览器传输到本地浏览器的
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -679,58 +687,6 @@ HTTP是超文本传输协议，从www浏览器传输到本地浏览器的
                     
                     <a href="/tags/http协议/">
                         <span class="chip bg-color">http协议</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/10/22/functional/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="JS函数式编程">
-                        
-                        <span class="card-title">JS函数式编程</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            1. 函数式编程的思维2. 函数式编程常用核心概念
-函数是一等公民，所谓一等公民，是指函数是与其他数据类型一样处于平等地位，可以付给其他变量，也可以作为参数，传入另一个函数，或者作为别的函数的返回值。
-不可改变量。在函数式编程中，我们通常理
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-22
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/js基础/" class="post-category">
-                                    js基础
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/js/">
-                        <span class="chip bg-color">js</span>
                     </a>
                     
                 </div>
